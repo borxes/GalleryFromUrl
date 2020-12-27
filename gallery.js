@@ -24,7 +24,6 @@ function quit(err) {
 }
 
 async function downloadFile(targetUrl, localFileName) {
-  console.log(`[downloading] ${targetUrl} to ${localFileName}`)
   const writer = fs.createWriteStream(localFileName)
 
   const response = await axios({
@@ -99,7 +98,6 @@ function findImageUrl(resizedImage, pathToUrl) {
   const resizeStrIndex = resizedImage.indexOf('.resized.')
   const origUrl = resizedImage.slice(0, resizeStrIndex) + resizedImage.slice(resizeStrIndex + '.resized.'.length - 1)
   const found = pathToUrl.find(elem => elem.path === origUrl)
-  console.log(`[findImage] path ${resizedImage} orig ${origUrl} found ${found} the whole map ${JSON.stringify(pathToUrl)}`)
   return found ? found.url : ''
 }
 
@@ -114,7 +112,6 @@ async function resizeImages(localFolder, pathToUrl) {
     const resizedPath = lastDotIndex > -1
       ? imagePath.slice(0, lastDotIndex) + '.resized' + imagePath.slice(lastDotIndex)
       : imagePath + 'resized'
-    console.log(`trying to resize ${imagePath}`)
     const resized = await resizeImage(imagePath)
     if (resized) {
       await fsPromises.writeFile(resizedPath, resized)
