@@ -5,14 +5,13 @@
   "main": "index.js",
   "scripts": {
     "start": "node gallery.js",
-    "test": "rm -rf test && node gallery.js https://coingecko.com output && open output/index.html"
+    "test": "node gallery.js https://coingecko.com output && open output/index.html"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",
-    "sharp": "^0.27.0",
-    "yargs": "^16.2.0"
+    "sharp": "^0.27.0"
   }
 }
